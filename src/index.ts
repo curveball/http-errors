@@ -1,7 +1,7 @@
 export class HttpError extends Error {
   httpCode: number = 500;
   title: string = 'Internal Server Error';
-  detail: string|null = null
+  detail: string|null = null;
 
   constructor(detail: string|null = null) {
 
