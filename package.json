@@ -1,7 +1,7 @@
 {
-  "name": "@curveball/new-package",
+  "name": "@curveball/http-errors",
   "version": "0.0.1",
-  "description": "Description goes here",
+  "description": "A standard package for HTTP exceptions",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "make build",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/curveballjs/new-package.git"
+    "url": "git+https://github.com/curveballjs/http-errors.git"
   },
   "files": [
     "package.json",
@@ -23,16 +23,14 @@
     "framework",
     "nodejs",
     "typescript",
-    "push",
-    "http2",
     "curveball"
   ],
   "author": "Evert Pot (https://evertpot.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/curveballjs/new-package/issues"
+    "url": "https://github.com/curveballjs/http-errors/issues"
   },
-  "homepage": "https://github.com/curveballjs/new-package#readme",
+  "homepage": "https://github.com/curveballjs/http-errors#readme",
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.3",
@@ -51,8 +49,5 @@
     "extension": [
       ".ts"
     ]
-  },
-  "dependencies": {
-    "@curveball/core": "^0.6.0"
   }
 }
