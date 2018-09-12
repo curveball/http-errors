@@ -1,3 +1,8 @@
+0.2.1 (????-??-??)
+=================
+
+* The `allow` parameter from `MethodNotAllowed` is now optional.
+
 0.2.0 (2018-09-12)
 ==================
 

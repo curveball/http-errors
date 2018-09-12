@@ -118,7 +118,7 @@ export class MethodNotAllowed extends HttpErrorBase {
   title = 'Method Not Allowed';
   allow: string[];
 
-  constructor(detail: string|null = null, allow: string[]) {
+  constructor(detail: string|null = null, allow?: string[]) {
 
     super(detail);
     this.allow = allow;
