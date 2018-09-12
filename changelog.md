@@ -1,3 +1,11 @@
+0.2.0 (2018-09-12)
+==================
+
+* Added `Unauthorized`, `PaymentRequired`, `Forbidden`.
+* Added support for `WWW-Authenticate` header for 401 responses and `Allow`
+  for 405 responses.
+
+
 0.1.0 (2018-09-11)
 ==================
 
