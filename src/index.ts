@@ -50,7 +50,7 @@ export class BadRequest extends HttpErrorBase {
   title = 'Bad Request';
 }
 
-type WwwAuthenticate = string | string[];
+type AuthenticateChallenge = string | string[];
 
 /**
  * Emits a 401 Unauthorized.
@@ -68,15 +68,14 @@ export class Unauthorized extends HttpErrorBase {
   httpCode = 401;
   title = 'Unauthorized';
 
-  wwwAuthenticate: WwwAuthenticate;
+  wwwAuthenticate: AuthenticateChallenge;
 
-  constructor(detail: string|null = null, wwwAuthenticate?: WwwAuthenticate) {
+  constructor(detail: string|null = null, wwwAuthenticate?: AuthenticateChallenge) {
 
     super(detail);
     this.wwwAuthenticate = wwwAuthenticate;
 
   }
-
 
 }
 
@@ -125,6 +124,49 @@ export class MethodNotAllowed extends HttpErrorBase {
 
   }
 
+}
+
+/**
+ * Emits 406 Not Acceptable
+ */
+export class NotAcceptable extends HttpErrorBase {
+  httpCode = 406;
+  title = 'Not Acceptable';
+}
+
+/**
+ * Emits a 407 Proxy Autentication Required
+ *
+ * This response must come with a Proxy-Authenticate header. This challenge can
+ * optionally be provided via the constructor.
+ *
+ * examples:
+ *    new ProxyAuthenticationRequired('Login failed', 'Basic');
+ *    new ProxyAuthenticationRequired('Login failed', 'Basic; realm="secret area"');
+ *    new ProxyAuthenticationRequired('Login failed', ['Basic; realm="secret area', 'Bearer']);
+ */
+export class ProxyAuthenticationRequired extends HttpErrorBase {
+
+  httpCode = 407;
+  title = 'Proxy Authentication Required';
+
+  proxyAuthenticate: AuthenticateChallenge;
+
+  constructor(detail: string|null = null, proxyAuthenticate?: AuthenticateChallenge) {
+
+    super(detail);
+    this.proxyAuthenticate = proxyAuthenticate;
+
+  }
+
+}
+
+/**
+ * Emits 422 Unprocessable Entity
+ */
+export class UnprocessableEntity extends HttpErrorBase {
+  httpCode = 422;
+  title = 'Unprocessable Entity';
 }
 
 /**
