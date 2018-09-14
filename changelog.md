@@ -1,8 +1,16 @@
+0.2.2 (2018-09-14)
+==================
+
+* Added `isHttpProblem()` helper function.
+* Added 408, 409, 410, 411, 412, 413.
+
+
 0.2.1 (2018-09-14)
 ==================
 
 * The `allow` parameter from `MethodNotAllowed` is now optional.
 * Added 406, 407, 422.
+
 
 0.2.0 (2018-09-12)
 ==================

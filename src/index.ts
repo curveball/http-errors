@@ -14,6 +14,11 @@ export function isHttpError(e: Error): e is HttpError {
   return Number.isInteger((<HttpError> e).httpCode);
 
 }
+export function isHttpProblem(e: Error): e is HttpProblem {
+
+  return (<HttpProblem> e).title !== undefined && isHttpError(e);
+
+}
 
 export class HttpErrorBase extends Error implements HttpProblem {
 
@@ -159,6 +164,71 @@ export class ProxyAuthenticationRequired extends HttpErrorBase {
 
   }
 
+}
+
+/**
+ * Emits 408 Request Timeout
+ */
+export class RequestTimeout extends HttpErrorBase {
+  httpCode = 408;
+  title = 'Request Timeout';
+}
+
+/**
+ * Emits 409 Conflict
+ */
+export class Conflict extends HttpErrorBase {
+  httpCode = 409;
+  title = 'Conflict';
+}
+
+/**
+ * Emits 410 Gone
+ */
+export class Gone extends HttpErrorBase {
+  httpCode = 410;
+  title = 'Gone';
+}
+
+/**
+ * Emits 411 Length Required
+ */
+export class LengthRequired extends HttpErrorBase {
+  httpCode = 411;
+  title = 'LengthRequired';
+}
+
+/**
+ * Emits 412 Precondition Failed
+ */
+export class PreconditionFailed extends HttpErrorBase {
+  httpCode = 412;
+  title = 'PreconditionFailed';
+}
+
+/**
+ * Emits 413 Payload Too Large.
+ *
+ * If the status is temporary, it's possible for a server to send a
+ * Retry-After header to try again. This value may be embeded in this
+ * exception.
+ *
+ * Example:
+ *
+ * throw new PayloadTooLarge('Send the large file again in 10 minutes', 600);
+ */
+export class PayloadTooLarge extends HttpErrorBase {
+  httpCode = 413;
+  title = 'Payload Too Large';
+
+  retryAfter: number | null;
+
+  constructor(detail: string|null = null, retryAfter: number|null = null) {
+
+    super(detail);
+    this.retryAfter = retryAfter;
+
+  }
 }
 
 /**
