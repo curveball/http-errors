@@ -1,8 +1,10 @@
-0.2.3 (2018-10-01)
+0.3.0 (2018-10-01)
 =================
 
+* Mass-renamed httpCode to the more common httpStatus.
 * Added all missing status codes.
 * Fully unittested.
+
 
 0.2.2 (2018-09-14)
 ==================
