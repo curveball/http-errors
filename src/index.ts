@@ -4,8 +4,10 @@ export interface HttpError extends Error {
 
 export interface HttpProblem extends HttpError {
 
+  type: string | null;
   title: string;
   detail: string | null;
+  instance: string | null;
 
 }
 
@@ -22,17 +24,17 @@ export function isHttpProblem(e: Error): e is HttpProblem {
 
 export class HttpErrorBase extends Error implements HttpProblem {
 
+  type: string | null = null;
   httpCode: number = 500;
   title: string = 'Internal Server Error';
   detail: string|null = null;
+  instance: string | null = null;
 
   constructor(detail: string|null = null) {
 
     super(detail);
-    if (!detail) {
-      this.message = this.title;
-    }
     this.detail = detail;
+    this.message = detail;
 
   }
 
@@ -288,9 +290,9 @@ export class Locked extends HttpErrorBase {
 }
 
 /**
- * Emits 424 Locked
+ * Emits 424 FailedDependency
  */
-export class FailedDepedency extends HttpErrorBase {
+export class FailedDependency extends HttpErrorBase {
   httpCode = 424;
   title = 'Failed Dependency';
 }

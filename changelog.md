@@ -2,7 +2,7 @@
 =================
 
 * Added all missing status codes.
-
+* Fully unittested.
 
 0.2.2 (2018-09-14)
 ==================
