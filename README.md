@@ -20,7 +20,13 @@ project I'm working on.
 I had trouble finding something similar on NPM, so I hope this is useful to
 others.
 
-This package has 0 dependencies.
+This package has 0 dependencies and is not a part of any frameworks. Someone
+could use this package and integrate it into their own frameworks as a
+middleware.
+
+The hope is that as long as this package is independent, it could be used by
+library authors to throw generic errors with HTTP error information.
+
 
 Installation
 ------------
@@ -44,7 +50,7 @@ This also works fine with plain javascript:
 
 ```javascript
 const { NotFound, Forbidden } = require('@curveball/http-errors');
-throw new Forbidden('You're not allowed to update this article');
+throw new Forbidden('You\'re not allowed to update this article');
 ```
 
 
@@ -52,14 +58,16 @@ The library also ships with a simple utility function to see if _any_ error has
 HTTP error information:
 
 ```typescript
-import { isHttpError } from '@curveball/http-errors`;
+import { isHttpError } from '@curveball/http-errors';
 
 const myError = new Error('Custom error');
 myError.httpStatus = 500;
+
+console.log(isHttpError(myError));
 ```
 
-This means that any error can work as a 'http error', as long as it has the
-right status.
+The idea is that as long as libraries follow this pattern, they don't need to
+depend on this library but they can be used automatically by middlewares.
 
 
 Built-in Error classes such as `NotFound`, `Unauthorized`, all have a `title`
