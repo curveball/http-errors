@@ -1,5 +1,5 @@
 export interface HttpError extends Error {
-  httpCode: number;
+  httpStatus: number;
 }
 
 export interface HttpProblem extends HttpError {
@@ -13,7 +13,7 @@ export interface HttpProblem extends HttpError {
 
 export function isHttpError(e: Error): e is HttpError {
 
-  return Number.isInteger((<HttpError> e).httpCode);
+  return Number.isInteger((<HttpError> e).httpStatus);
 
 }
 export function isHttpProblem(e: Error): e is HttpProblem {
@@ -25,7 +25,7 @@ export function isHttpProblem(e: Error): e is HttpProblem {
 export class HttpErrorBase extends Error implements HttpProblem {
 
   type: string | null = null;
-  httpCode: number = 500;
+  httpStatus: number = 500;
   title: string = 'Internal Server Error';
   detail: string|null = null;
   instance: string | null = null;
@@ -42,18 +42,18 @@ export class HttpErrorBase extends Error implements HttpProblem {
 
 export function isClientError(e: Error): boolean {
 
-  return isHttpError(e) && e.httpCode >= 400 && e.httpCode <= 499;
+  return isHttpError(e) && e.httpStatus >= 400 && e.httpStatus <= 499;
 
 }
 
 export function isServerError(e: Error): boolean {
 
-  return isHttpError(e) && e.httpCode >= 500 && e.httpCode <= 599;
+  return isHttpError(e) && e.httpStatus >= 500 && e.httpStatus <= 599;
 
 }
 
 export class BadRequest extends HttpErrorBase {
-  httpCode = 400;
+  httpStatus = 400;
   title = 'Bad Request';
 }
 
@@ -72,7 +72,7 @@ type AuthenticateChallenge = string | string[];
  */
 export class Unauthorized extends HttpErrorBase {
 
-  httpCode = 401;
+  httpStatus = 401;
   title = 'Unauthorized';
 
   wwwAuthenticate: AuthenticateChallenge;
@@ -90,7 +90,7 @@ export class Unauthorized extends HttpErrorBase {
  * Emits 402 Payment Required
  */
 export class PaymentRequired extends HttpErrorBase {
-  httpCode = 402;
+  httpStatus = 402;
   title = 'Payment Required';
 }
 
@@ -98,7 +98,7 @@ export class PaymentRequired extends HttpErrorBase {
  * Emits 403 Forbidden
  */
 export class Forbidden extends HttpErrorBase {
-  httpCode = 403;
+  httpStatus = 403;
   title = 'Forbiddden';
 }
 
@@ -106,7 +106,7 @@ export class Forbidden extends HttpErrorBase {
  * Emits 404 Not Found
  */
 export class NotFound extends HttpErrorBase {
-  httpCode = 404;
+  httpStatus = 404;
   title = 'Not Found';
 }
 
@@ -120,7 +120,7 @@ export class NotFound extends HttpErrorBase {
  *   new MethodNotAllowed('This resource is read-only', ['GET', 'HEAD', 'OPTIONS']);
  */
 export class MethodNotAllowed extends HttpErrorBase {
-  httpCode = 405;
+  httpStatus = 405;
   title = 'Method Not Allowed';
   allow: string[];
 
@@ -137,7 +137,7 @@ export class MethodNotAllowed extends HttpErrorBase {
  * Emits 406 Not Acceptable
  */
 export class NotAcceptable extends HttpErrorBase {
-  httpCode = 406;
+  httpStatus = 406;
   title = 'Not Acceptable';
 }
 
@@ -154,7 +154,7 @@ export class NotAcceptable extends HttpErrorBase {
  */
 export class ProxyAuthenticationRequired extends HttpErrorBase {
 
-  httpCode = 407;
+  httpStatus = 407;
   title = 'Proxy Authentication Required';
 
   proxyAuthenticate: AuthenticateChallenge;
@@ -172,7 +172,7 @@ export class ProxyAuthenticationRequired extends HttpErrorBase {
  * Emits 408 Request Timeout
  */
 export class RequestTimeout extends HttpErrorBase {
-  httpCode = 408;
+  httpStatus = 408;
   title = 'Request Timeout';
 }
 
@@ -180,7 +180,7 @@ export class RequestTimeout extends HttpErrorBase {
  * Emits 409 Conflict
  */
 export class Conflict extends HttpErrorBase {
-  httpCode = 409;
+  httpStatus = 409;
   title = 'Conflict';
 }
 
@@ -188,7 +188,7 @@ export class Conflict extends HttpErrorBase {
  * Emits 410 Gone
  */
 export class Gone extends HttpErrorBase {
-  httpCode = 410;
+  httpStatus = 410;
   title = 'Gone';
 }
 
@@ -196,7 +196,7 @@ export class Gone extends HttpErrorBase {
  * Emits 411 Length Required
  */
 export class LengthRequired extends HttpErrorBase {
-  httpCode = 411;
+  httpStatus = 411;
   title = 'LengthRequired';
 }
 
@@ -204,7 +204,7 @@ export class LengthRequired extends HttpErrorBase {
  * Emits 412 Precondition Failed
  */
 export class PreconditionFailed extends HttpErrorBase {
-  httpCode = 412;
+  httpStatus = 412;
   title = 'PreconditionFailed';
 }
 
@@ -220,7 +220,7 @@ export class PreconditionFailed extends HttpErrorBase {
  * throw new PayloadTooLarge('Send the large file again in 10 minutes', 600);
  */
 export class PayloadTooLarge extends HttpErrorBase {
-  httpCode = 413;
+  httpStatus = 413;
   title = 'Payload Too Large';
 
   retryAfter: number | null;
@@ -237,7 +237,7 @@ export class PayloadTooLarge extends HttpErrorBase {
  * Emits 414 URI Too Long
  */
 export class UriTooLong extends HttpErrorBase {
-  httpCode = 414;
+  httpStatus = 414;
   title = 'URI Too Long';
 }
 
@@ -245,7 +245,7 @@ export class UriTooLong extends HttpErrorBase {
  * Emits 415 Unsupported Media Type
  */
 export class UnsupportedMediaType extends HttpErrorBase {
-  httpCode = 415;
+  httpStatus = 415;
   title = 'Unsupported Media Type';
 }
 
@@ -253,7 +253,7 @@ export class UnsupportedMediaType extends HttpErrorBase {
  * Emits 416 Range Not Satisfiable
  */
 export class RangeNotSatisfiable extends HttpErrorBase {
-  httpCode = 416;
+  httpStatus = 416;
   title = 'Range Not Satisfiable';
 }
 
@@ -261,7 +261,7 @@ export class RangeNotSatisfiable extends HttpErrorBase {
  * Emits 417 Expectation Failed
  */
 export class ExpectationFailed extends HttpErrorBase {
-  httpCode = 417;
+  httpStatus = 417;
   title = 'Expectation Failed';
 }
 
@@ -269,7 +269,7 @@ export class ExpectationFailed extends HttpErrorBase {
  * Emits 421 Misdirected Request
  */
 export class MisdirectedRequest extends HttpErrorBase {
-  httpCode = 421;
+  httpStatus = 421;
   title = 'Misdirected Request';
 }
 
@@ -277,7 +277,7 @@ export class MisdirectedRequest extends HttpErrorBase {
  * Emits 422 Unprocessable Entity
  */
 export class UnprocessableEntity extends HttpErrorBase {
-  httpCode = 422;
+  httpStatus = 422;
   title = 'Unprocessable Entity';
 }
 
@@ -285,7 +285,7 @@ export class UnprocessableEntity extends HttpErrorBase {
  * Emits 423 Locked
  */
 export class Locked extends HttpErrorBase {
-  httpCode = 423;
+  httpStatus = 423;
   title = 'Locked';
 }
 
@@ -293,7 +293,7 @@ export class Locked extends HttpErrorBase {
  * Emits 424 FailedDependency
  */
 export class FailedDependency extends HttpErrorBase {
-  httpCode = 424;
+  httpStatus = 424;
   title = 'Failed Dependency';
 }
 
@@ -301,7 +301,7 @@ export class FailedDependency extends HttpErrorBase {
  * Emits 425 Too Early
  */
 export class TooEarly extends HttpErrorBase {
-  httpCode = 425;
+  httpStatus = 425;
   title = 'Too Early';
 }
 
@@ -309,7 +309,7 @@ export class TooEarly extends HttpErrorBase {
  * Emits 426 Upgrade Required
  */
 export class UpgradeRequired extends HttpErrorBase {
-  httpCode = 426;
+  httpStatus = 426;
   title = 'Upgrade Required';
 }
 
@@ -317,7 +317,7 @@ export class UpgradeRequired extends HttpErrorBase {
  * Emits 428 Precondition Required
  */
 export class PreconditionRequired extends HttpErrorBase {
-  httpCode = 428;
+  httpStatus = 428;
   title = 'Precondition Required';
 }
 
@@ -334,7 +334,7 @@ export class PreconditionRequired extends HttpErrorBase {
  *
  */
 export class TooManyRequests extends HttpErrorBase {
-  httpCode = 429;
+  httpStatus = 429;
   title = 'Too Many Requests';
 
   retryAfter: number | null;
@@ -351,7 +351,7 @@ export class TooManyRequests extends HttpErrorBase {
  * Emits 431 Request Header Fields Too Large
  */
 export class RequestHeaderFieldsTooLarge extends HttpErrorBase {
-  httpCode = 431;
+  httpStatus = 431;
   title = 'Request Header Fields Too Large';
 }
 
@@ -359,7 +359,7 @@ export class RequestHeaderFieldsTooLarge extends HttpErrorBase {
  * Emits 451 Unavailable For Legal Reasons
  */
 export class UnavailableForLegalReasons extends HttpErrorBase {
-  httpCode = 451;
+  httpStatus = 451;
   title = 'Unavailable For Legal Reasons';
 }
 
@@ -367,7 +367,7 @@ export class UnavailableForLegalReasons extends HttpErrorBase {
  * Emits 500 Internal Server Error
  */
 export class InternalServerError  extends HttpErrorBase {
-  httpCode = 500;
+  httpStatus = 500;
   title = 'Internal Server Error';
 }
 
@@ -375,7 +375,7 @@ export class InternalServerError  extends HttpErrorBase {
  * Emits 501 Not Implemented
  */
 export class NotImplemented extends HttpErrorBase {
-  httpCode = 501;
+  httpStatus = 501;
   title = 'Not Implemented';
 }
 
@@ -383,7 +383,7 @@ export class NotImplemented extends HttpErrorBase {
  * Emits 502 Bad Gateway
  */
 export class BadGateway extends HttpErrorBase {
-  httpCode = 502;
+  httpStatus = 502;
   title = 'Bad Gateway';
 }
 
@@ -400,7 +400,7 @@ export class BadGateway extends HttpErrorBase {
  *
  */
 export class ServiceUnavailable extends HttpErrorBase {
-  httpCode = 503;
+  httpStatus = 503;
   title = 'Service Unavailable';
 
   retryAfter: number | null;
@@ -417,7 +417,7 @@ export class ServiceUnavailable extends HttpErrorBase {
  * Emits 504 Gateway Timeout
  */
 export class GatewayTimeout extends HttpErrorBase {
-  httpCode = 504;
+  httpStatus = 504;
   title = 'Gateway Timeout';
 }
 
@@ -425,7 +425,7 @@ export class GatewayTimeout extends HttpErrorBase {
  * Emits 505 HTTP Version Not Supported
  */
 export class HttpVersionNotSupported extends HttpErrorBase {
-  httpCode = 505;
+  httpStatus = 505;
   title = 'HTTP Version Not Supported';
 }
 
@@ -433,7 +433,7 @@ export class HttpVersionNotSupported extends HttpErrorBase {
  * Emits 506 Variant Also Negotiates
  */
 export class VariantAlsoNegotiates extends HttpErrorBase {
-  httpCode = 506;
+  httpStatus = 506;
   title = 'Variant Also Negotiates';
 }
 
@@ -441,7 +441,7 @@ export class VariantAlsoNegotiates extends HttpErrorBase {
  * Emits 507 Insufficient Storage
  */
 export class UnsufficientStorage extends HttpErrorBase {
-  httpCode = 507;
+  httpStatus = 507;
   title = 'Unsufficient Storage';
 }
 
@@ -449,7 +449,7 @@ export class UnsufficientStorage extends HttpErrorBase {
  * Emits 508 Loop Detected
  */
 export class LoopDetected extends HttpErrorBase {
-  httpCode = 508;
+  httpStatus = 508;
   title = 'Loop Detected';
 }
 
@@ -457,7 +457,7 @@ export class LoopDetected extends HttpErrorBase {
  * Emits 510 Not Extended
  */
 export class NotExtended extends HttpErrorBase {
-  httpCode = 510;
+  httpStatus = 510;
   title = 'Not Extended';
 }
 
@@ -465,6 +465,6 @@ export class NotExtended extends HttpErrorBase {
  * Emits 511 Network Authentication Required
  */
 export class NetworkAuthenticationRequired extends HttpErrorBase {
-  httpCode = 511;
+  httpStatus = 511;
   title = 'Network Authentication Required';
 }
