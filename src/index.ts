@@ -232,11 +232,133 @@ export class PayloadTooLarge extends HttpErrorBase {
 }
 
 /**
+ * Emits 414 URI Too Long
+ */
+export class UriTooLong extends HttpErrorBase {
+  httpCode = 414;
+  title = 'URI Too Long';
+}
+
+/**
+ * Emits 415 Unsupported Media Type
+ */
+export class UnsupportedMediaType extends HttpErrorBase {
+  httpCode = 415;
+  title = 'Unsupported Media Type';
+}
+
+/**
+ * Emits 416 Range Not Satisfiable
+ */
+export class RangeNotSatisfiable extends HttpErrorBase {
+  httpCode = 416;
+  title = 'Range Not Satisfiable';
+}
+
+/**
+ * Emits 417 Expectation Failed
+ */
+export class ExpectationFailed extends HttpErrorBase {
+  httpCode = 417;
+  title = 'Expectation Failed';
+}
+
+/**
+ * Emits 421 Misdirected Request
+ */
+export class MisdirectedRequest extends HttpErrorBase {
+  httpCode = 421;
+  title = 'Misdirected Request';
+}
+
+/**
  * Emits 422 Unprocessable Entity
  */
 export class UnprocessableEntity extends HttpErrorBase {
   httpCode = 422;
   title = 'Unprocessable Entity';
+}
+
+/**
+ * Emits 423 Locked
+ */
+export class Locked extends HttpErrorBase {
+  httpCode = 423;
+  title = 'Locked';
+}
+
+/**
+ * Emits 424 Locked
+ */
+export class FailedDepedency extends HttpErrorBase {
+  httpCode = 424;
+  title = 'Failed Dependency';
+}
+
+/**
+ * Emits 425 Too Early
+ */
+export class TooEarly extends HttpErrorBase {
+  httpCode = 425;
+  title = 'Too Early';
+}
+
+/**
+ * Emits 426 Upgrade Required
+ */
+export class UpgradeRequired extends HttpErrorBase {
+  httpCode = 426;
+  title = 'Upgrade Required';
+}
+
+/**
+ * Emits 428 Precondition Required
+ */
+export class PreconditionRequired extends HttpErrorBase {
+  httpCode = 428;
+  title = 'Precondition Required';
+}
+
+/**
+ * Emits 429 Too Many Requests
+ *
+ * When sending this status the server may also send a Retry-After header
+ * indicating when it's safe try again.
+ *
+ * It's possible to supply this information via the second argument.
+ *
+ * Example:
+ *   throw new ServiceUnavailable('We\'re down temporarily', 600)
+ *
+ */
+export class TooManyRequests extends HttpErrorBase {
+  httpCode = 429;
+  title = 'Too Many Requests';
+
+  retryAfter: number | null;
+
+  constructor(detail: string|null = null, retryAfter: number|null = null) {
+
+    super(detail);
+    this.retryAfter = retryAfter;
+
+  }
+}
+
+/**
+ * Emits 431 Request Header Fields Too Large
+ */
+export class RequestHeaderFieldsTooLarge extends HttpErrorBase {
+  httpCode = 431;
+  title = 'Request Header Fields Too Large';
+}
+
+/**
+ * Emits 451 Unavailable For Legal Reasons
+ */
+export class UnavailableForLegalReasons extends HttpErrorBase {
+  httpCode = 451;
+  title = 'Unavailable For Legal Reasons';
 }
 
 /**
@@ -253,4 +375,94 @@ export class InternalServerError  extends HttpErrorBase {
 export class NotImplemented extends HttpErrorBase {
   httpCode = 501;
   title = 'Not Implemented';
+}
+
+/**
+ * Emits 502 Bad Gateway
+ */
+export class BadGateway extends HttpErrorBase {
+  httpCode = 502;
+  title = 'Bad Gateway';
+}
+
+/**
+ * Emits 503 Service Unavailable.
+ *
+ * When sending this status the server may also send a Retry-After header
+ * indicating when it's safe try again.
+ *
+ * It's possible to supply this information via the second argument.
+ *
+ * Example:
+ *   throw new ServiceUnavailable('We\'re down temporarily', 600)
+ *
+ */
+export class ServiceUnavailable extends HttpErrorBase {
+  httpCode = 503;
+  title = 'Service Unavailable';
+
+  retryAfter: number | null;
+
+  constructor(detail: string|null = null, retryAfter: number|null = null) {
+
+    super(detail);
+    this.retryAfter = retryAfter;
+
+  }
+}
+
+/**
+ * Emits 504 Gateway Timeout
+ */
+export class GatewayTimeout extends HttpErrorBase {
+  httpCode = 504;
+  title = 'Gateway Timeout';
+}
+
+/**
+ * Emits 505 HTTP Version Not Supported
+ */
+export class HttpVersionNotSupported extends HttpErrorBase {
+  httpCode = 505;
+  title = 'HTTP Version Not Supported';
+}
+
+/**
+ * Emits 506 Variant Also Negotiates
+ */
+export class VariantAlsoNegotiates extends HttpErrorBase {
+  httpCode = 506;
+  title = 'Variant Also Negotiates';
+}
+
+/**
+ * Emits 507 Insufficient Storage
+ */
+export class UnsufficientStorage extends HttpErrorBase {
+  httpCode = 507;
+  title = 'Unsufficient Storage';
+}
+
+/**
+ * Emits 508 Loop Detected
+ */
+export class LoopDetected extends HttpErrorBase {
+  httpCode = 508;
+  title = 'Loop Detected';
+}
+
+/**
+ * Emits 510 Not Extended
+ */
+export class NotExtended extends HttpErrorBase {
+  httpCode = 510;
+  title = 'Not Extended';
+}
+
+/**
+ * Emits 511 Network Authentication Required
+ */
+export class NetworkAuthenticationRequired extends HttpErrorBase {
+  httpCode = 511;
+  title = 'Network Authentication Required';
 }
