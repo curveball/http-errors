@@ -88,11 +88,11 @@ console.log(isClientError(e)); // true
 console.log(isServerError(e)); // false
 ```
 
-Lastly, a few HTTP errors require or suggest including extra HTTP headers with
-more information about headers. For example, the `405 Method Not Allowed`
-header should contain an `Allow` header, and the `503 Service Unavailable`
+Lastly, a few HTTP responses require or suggest including extra HTTP headers with
+more information about the error. For example, the `405 Method Not Allowed`
+response should include an `Allow` header, and the `503 Service Unavailable`
 should have a `Retry-After` header. The built-in error classes include support
-for these:
+these:
 
 ```typescript
 import { MethodNotAllowed, ServiceUnavailable } from '@curveball/http-errors';
