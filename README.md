@@ -1,6 +1,8 @@
 HTTP Errors
 ===========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/curveballjs/http-errors.svg)](https://greenkeeper.io/)
+
 This package contains a list of standard HTTP exceptions for Typescript. They
 can be emitted from a Node.js web application written in for example [Koa][2]
 or [Curveball][1], or they can be re-used in a HTTP client.
