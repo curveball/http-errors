@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/curveballjs/http-errors.git"
+    "url": "git+https://github.com/curveball/http-errors.git"
   },
   "files": [
     "package.json",
@@ -28,9 +28,9 @@
   "author": "Evert Pot (https://evertpot.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/curveballjs/http-errors/issues"
+    "url": "https://github.com/curveball/http-errors/issues"
   },
-  "homepage": "https://github.com/curveballjs/http-errors#readme",
+  "homepage": "https://github.com/curveball/http-errors#readme",
   "devDependencies": {
     "@types/chai": "^4.2.5",
     "@types/mocha": "^5.2.7",
@@ -48,6 +48,15 @@
   "nyc": {
     "extension": [
       ".ts"
+    ]
+  },
+  "mocha": {
+    "require": "ts-node/register",
+    "recursive": true,
+    "extension": [
+      "ts",
+      "js",
+      "tsx"
     ]
   }
 }

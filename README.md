@@ -1,7 +1,7 @@
 HTTP Errors
 ===========
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/curveballjs/http-errors.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/curveball/http-errors.svg)](https://greenkeeper.io/)
 
 This package contains a list of standard HTTP exceptions for Typescript. They
 can be emitted from a Node.js web application written in for example [Koa][2]
@@ -226,6 +226,6 @@ export class NetworkAuthenticationRequired extends HttpErrorBase {}
 
 ...
 
-[1]: https://github.com/curveballjs/
+[1]: https://github.com/curveball/
 [2]: http://koajs.com/
 [3]: https://tools.ietf.org/html/rfc7807
