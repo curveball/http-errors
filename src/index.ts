@@ -32,9 +32,8 @@ export class HttpErrorBase extends Error implements HttpProblem {
 
   constructor(detail: string|null = null) {
 
-    super(detail);
+    super(detail || 'HTTP error');
     this.detail = detail;
-    this.message = detail;
 
   }
 
@@ -75,7 +74,7 @@ export class Unauthorized extends HttpErrorBase {
   httpStatus = 401;
   title = 'Unauthorized';
 
-  wwwAuthenticate: AuthenticateChallenge;
+  wwwAuthenticate?: AuthenticateChallenge;
 
   constructor(detail: string|null = null, wwwAuthenticate?: AuthenticateChallenge) {
 
@@ -122,7 +121,7 @@ export class NotFound extends HttpErrorBase {
 export class MethodNotAllowed extends HttpErrorBase {
   httpStatus = 405;
   title = 'Method Not Allowed';
-  allow: string[];
+  allow?: string[];
 
   constructor(detail: string|null = null, allow?: string[]) {
 
@@ -157,7 +156,7 @@ export class ProxyAuthenticationRequired extends HttpErrorBase {
   httpStatus = 407;
   title = 'Proxy Authentication Required';
 
-  proxyAuthenticate: AuthenticateChallenge;
+  proxyAuthenticate?: AuthenticateChallenge;
 
   constructor(detail: string|null = null, proxyAuthenticate?: AuthenticateChallenge) {
 

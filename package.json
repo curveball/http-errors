@@ -32,17 +32,17 @@
   },
   "homepage": "https://github.com/curveball/http-errors#readme",
   "devDependencies": {
-    "@types/chai": "^4.2.5",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^10.17.6",
-    "@types/sinon": "^7.0.13",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^10.17.18",
+    "@types/sinon": "^9.0.0",
     "chai": "^4.2.0",
-    "mocha": "^6.2.0",
+    "mocha": "^7.1.1",
     "nyc": "^15.0.0",
-    "sinon": "^8.0.0",
-    "ts-node": "^8.3.0",
-    "tslint": "^5.20.1",
-    "typescript": "^3.5.3"
+    "sinon": "^9.0.1",
+    "ts-node": "^8.8.1",
+    "tslint": "^6.1.0",
+    "typescript": "^3.8.3"
   },
   "types": "dist/",
   "nyc": {
