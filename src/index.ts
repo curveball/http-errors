@@ -98,7 +98,7 @@ export class PaymentRequired extends HttpErrorBase {
  */
 export class Forbidden extends HttpErrorBase {
   httpStatus = 403;
-  title = 'Forbiddden';
+  title = 'Forbidden';
 }
 
 /**
