@@ -11,13 +11,15 @@ export interface HttpProblem extends HttpError {
 
 }
 
-export function isHttpError(e: Error): e is HttpError {
+export function isHttpError(e: unknown): e is HttpError {
 
+  if (!e) return false;
   return Number.isInteger((e as HttpError).httpStatus);
 
 }
-export function isHttpProblem(e: Error): e is HttpProblem {
+export function isHttpProblem(e: unknown): e is HttpProblem {
 
+  if (!e) return false;
   return (e as HttpProblem).title !== undefined && isHttpError(e);
 
 }
