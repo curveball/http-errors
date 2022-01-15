@@ -329,7 +329,7 @@ export class PreconditionRequired extends HttpErrorBase {
  * It's possible to supply this information via the second argument.
  *
  * Example:
- *   throw new ServiceUnavailable('We\'re down temporarily', 600)
+ *   throw new TooManyRequests('Try again in 10 minutes', 600)
  *
  */
 export class TooManyRequests extends HttpErrorBase {
