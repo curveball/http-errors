@@ -1,6 +1,15 @@
 Changelog
 =========
 
+0.4.1 (2022-01-15)
+------------------
+
+* `isHttpError` and `isHttpProblem` can now take any (unknown) type as
+  arguments, making it easier to use these functions without casting.
+* `Forbiddden` -> `Forbidden`.
+* Update everything to latest curveball defaults.
+* Update all dependencies.
+
 0.4.0 (2021-02-18)
 -------------------
 
