@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.5.0 (????-??-??)
+------------------
+
+* This package now supports ESM and CommonJS modules.
+* No longer supports Node 14.
+
+
 0.4.1 (2022-01-15)
 ------------------
 
@@ -10,15 +17,16 @@ Changelog
 * Update everything to latest curveball defaults.
 * Update all dependencies.
 
+
 0.4.0 (2021-02-18)
--------------------
+------------------
 
 * Update everything to latest curveball standards.
 * Publish on github packages
 
 
 0.3.0 (2018-10-01)
------------------
+------------------
 
 * Mass-renamed httpCode to the more common httpStatus.
 * Added all missing status codes.
@@ -43,15 +51,14 @@ Changelog
 ------------------
 
 * Added `Unauthorized`, `PaymentRequired`, `Forbidden`.
-* Added support for `WWW-Authenticate` header for 401 responses and `Allow`
-  for 405 responses.
+* Added support for `WWW-Authenticate` header for 401 responses and `Allow` for
+  405 responses.
 
 
 0.1.0 (2018-09-11)
 ------------------
 
-* Dropped `ClientError` and `ServerError` interfaces, they aren't useful in
-  TS.
+* Dropped `ClientError` and `ServerError` interfaces, they aren't useful in TS.
 * Added `HttpError` and `HttpProblem` interfaces.
 * Added `isHttpError` type guard.
 * Added `isClientError` and `isServerError` helpers.

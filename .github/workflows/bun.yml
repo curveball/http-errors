@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Bun Test Runner
 
 on:
   push:
@@ -10,21 +10,29 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  bun-test:
+    name: Bun tests
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Bun
+      uses: antongolub/action-setup-bun@v1
+    - run: bun install
+    - run: bun run build
+    - run: bun run mocha
+
+  lint:
+    name: Lint
+
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 18.x
     - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - run: npm run lint

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as err from '../src';
+import * as err from '../src/index.js';
 
 describe('isHttpError', () => {
 
