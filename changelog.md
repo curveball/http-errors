@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 * This package now supports ESM and CommonJS modules.
+* No longer supports Node 14.
 
 
 0.4.1 (2022-01-15)
