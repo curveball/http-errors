@@ -74,7 +74,7 @@ Built-in Error classes such as `NotFound`, `Unauthorized`, all have a `title`
 property with the default HTTP error string.
 
 ```typescript
-const myError = new MethodNotAllowed('I can\'t believe youi\'ve done this');
+const myError = new MethodNotAllowed('I can\'t believe you\'ve done this');
 console.log(myError.title); // Emits "Method Not Allowed"
 ```
 
