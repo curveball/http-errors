@@ -1,6 +1,21 @@
 Changelog
 =========
 
+1.0.0 (2024-01-15)
+------------------
+
+* Finally! Curveball v1. Only took 6 years.
+* CommonJS support has been dropped. The previous version of this library
+  supported both CommonJS and ESM. The effort of this no longer feels worth it.
+  ESM is the future, so we're dropping CommonJS.
+* Now requires Node 18.
+* Upgraded to Typescript 5.3.
+* To match RFC9110, `UnprocessableEntity` is now `UnprocessableContent`, and
+  `PayloadToolarge` is now `ContentTooLarge`. The old classes still exist and
+  have been marked as deprecated.
+* Updated references from RFC7807 to RFC9457.
+
+
 0.5.0 (2023-02-14)
 ------------------
 

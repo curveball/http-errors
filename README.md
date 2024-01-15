@@ -111,7 +111,7 @@ try {
 ```
 
 Lastly, it the package has an interface that makes it easier to work with the
-`application/problem+json` format, as defined in [RFC7807][3]. The interface
+`application/problem+json` format, as defined in [RFC9457][3]. The interface
 has `type`, `title`, `detail` and `instance` properties, which makes it easier
 to write a generic interface that emits this JSON error format.
 
@@ -180,7 +180,7 @@ export class Gone extends HttpErrorBase {}
 export class LengthRequired extends HttpErrorBase {}
 export class PreconditionFailed extends HttpErrorBase {}
 
-export class PayloadTooLarge extends HttpErrorBase {
+export class ContentTooLarge extends HttpErrorBase {
   retryAfter: number | null;
   constructor(detail: string|null = null, retryAfter: number|null = null) {}
 }
@@ -190,7 +190,7 @@ export class UnsupportedMediaType extends HttpErrorBase {}
 export class RangeNotSatisfiable extends HttpErrorBase {}
 export class ExpectationFailed extends HttpErrorBase {}
 export class MisdirectedRequest extends HttpErrorBase {}
-export class UnprocessableEntity extends HttpErrorBase {}
+export class UnprocessableContent extends HttpErrorBase {}
 export class Locked extends HttpErrorBase {}
 export class FailedDependency extends HttpErrorBase {}
 export class TooEarly extends HttpErrorBase {}
@@ -218,7 +218,6 @@ export class HttpVersionNotSupported extends HttpErrorBase {}
 export class VariantAlsoNegotiates extends HttpErrorBase {}
 export class UnsufficientStorage extends HttpErrorBase {}
 export class LoopDetected extends HttpErrorBase {}
-export class NotExtended extends HttpErrorBase {}
 export class NetworkAuthenticationRequired extends HttpErrorBase {}
 ```
 
@@ -226,4 +225,4 @@ export class NetworkAuthenticationRequired extends HttpErrorBase {}
 
 [1]: https://github.com/curveball/
 [2]: http://koajs.com/
-[3]: https://tools.ietf.org/html/rfc7807
+[3]: https://tools.ietf.org/html/rfc9457

@@ -210,7 +210,7 @@ export class PreconditionFailed extends HttpErrorBase {
 }
 
 /**
- * Emits 413 Payload Too Large.
+ * Emits 413 Content Too Large
  *
  * If the status is temporary, it's possible for a server to send a
  * Retry-After header to try again. This value may be embeded in this
@@ -220,9 +220,9 @@ export class PreconditionFailed extends HttpErrorBase {
  *
  * throw new PayloadTooLarge('Send the large file again in 10 minutes', 600);
  */
-export class PayloadTooLarge extends HttpErrorBase {
+export class ContentTooLarge extends HttpErrorBase {
   httpStatus = 413;
-  title = 'Payload Too Large';
+  title = 'Content Too Large';
 
   retryAfter: number | null;
 
@@ -233,6 +233,14 @@ export class PayloadTooLarge extends HttpErrorBase {
 
   }
 }
+
+/**
+  * Payload Too Large was the old name of this error, but all instances of
+  * Payload have been renamed to Content in RFC9110.
+  *
+  * @deprecated
+ */
+export class PayloadTooLarge extends ContentTooLarge {}
 
 /**
  * Emits 414 URI Too Long
@@ -275,11 +283,19 @@ export class MisdirectedRequest extends HttpErrorBase {
 }
 
 /**
- * Emits 422 Unprocessable Entity
+ * Emits 422 Unprocessable Content
  */
-export class UnprocessableEntity extends HttpErrorBase {
+export class UnprocessableContent extends HttpErrorBase {
   httpStatus = 422;
   title = 'Unprocessable Entity';
+}
+
+/**
+ * RFC9110 renamed this to Unprocessable Content.
+ *
+ * @deprecated
+ */
+export class UnprocessableEntity extends UnprocessableContent {
 }
 
 /**
@@ -455,7 +471,11 @@ export class LoopDetected extends HttpErrorBase {
 }
 
 /**
- * Emits 510 Not Extended
+ * Emits 510 Not Extended.
+ *
+ * This status code has been marked as obsolute.
+ *
+ * @deprecated
  */
 export class NotExtended extends HttpErrorBase {
   httpStatus = 510;
