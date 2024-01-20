@@ -30,9 +30,6 @@
     "type": "git",
     "url": "git+https://github.com/curveball/http-errors.git"
   },
-  "peerDependencies": {
-    "@curveball/kernel": "^1"
-  },
   "devDependencies": {
     "@curveball/kernel": "^1.0.0",
     "@types/chai": "^4.2.12",
