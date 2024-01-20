@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.1 (????-??-??)
+1.0.1 (2024-01-20)
 ------------------
 
 * Remove dependency on @curveball/kernel

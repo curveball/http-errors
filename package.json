@@ -1,6 +1,6 @@
 {
   "name": "@curveball/http-errors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A standard package for HTTP exceptions",
   "type": "module",
   "exports": "./dist/index.js",
